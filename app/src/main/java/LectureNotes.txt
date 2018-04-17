@@ -1,0 +1,30 @@
+Room SQLite3 Abstraction Layer which handles all the database calls.
+
+https://developer.android.com/training/data-storage/room/index.html
+
+Add to build.gradle (project)
+ext {
+    roomVersion = '1.1.0-beta1'
+}
+
+Modify build.gradle  (app)
+    implementation "android.arch.persistence.room:runtime:$rootProject.roomVersion"
+    annotationProcessor "android.arch.persistence.room:compiler:$rootProject.roomVersion"
+    androidTestImplementation "android.arch.persistence.room:testing:$rootProject.roomVersion"
+
+
+    implementation "android.arch.persistence.room:runtime:1.1.0-beta1"
+    annotationProcessor "android.arch.persistence.room:compiler:1.1.0-beta1"
+
+Create the various files needed by the ROOMS system.
+    Create Entity class
+    Create Database file
+    Create DAO - holds all queries
+
+http://sqlitebrowser.org/
+Copy the DB file to desktop and open with the browser app.
+
+Edit event
+New Event
+List Events
+Show Event
