@@ -1,10 +1,15 @@
 package com.lockersoft.androidmobilespring2018;
 
 import android.arch.persistence.room.Room;
+import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.ParcelUuid;
 import android.os.PersistableBundle;
+import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -12,6 +17,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import java.io.ByteArrayOutputStream;
 import java.util.Date;
 
 public class BaseActivity extends AppCompatActivity{
@@ -104,4 +110,18 @@ public class BaseActivity extends AppCompatActivity{
         msg, Toast.LENGTH_SHORT ).show();
   }
 
+
+  public Uri getImageUri(Context inContext, Bitmap inImage) {
+    ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+    inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+    String path = MediaStore.Images.Media.insertImage(inContext.getContentResolver(), inImage, "Title", null);
+    return Uri.parse(path);
+  }
+
+  public String getRealPathFromURI(Uri uri) {
+    Cursor cursor = getContentResolver().query(uri, null, null, null, null);
+    cursor.moveToFirst();
+    int idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA);
+    return cursor.getString(idx);
+  }
 }

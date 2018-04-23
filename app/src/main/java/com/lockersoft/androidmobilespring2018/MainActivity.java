@@ -4,6 +4,7 @@ import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.Observer;
 import android.arch.persistence.room.Room;
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,6 +32,7 @@ public class MainActivity extends BaseActivity {
   ListView lstViewEvents;
   Runnable run;
   Context thisContext;
+  ImageView img;
 
   @Override
   public void onCreate( Bundle savedInstanceState ) {
@@ -51,6 +54,12 @@ public class MainActivity extends BaseActivity {
 //        runOnUiThread(run);
       }
     });
+
+
+    img = (ImageView)findViewById(R.id.imageViewEvent);
+    img.setImageResource(R.drawable.event1);
+//    int id = getResources().getIdentifier(lowerCountryCode, "drawable", getPackageName());  // Get by name
+
 
     if( eventDatabase == null ) {
       eventDatabase = Room.databaseBuilder(getApplicationContext(),

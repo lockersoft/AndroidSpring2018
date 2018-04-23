@@ -6,7 +6,7 @@ import android.arch.persistence.room.RoomDatabase;
 import com.lockersoft.androidmobilespring2018.Event;
 import com.lockersoft.androidmobilespring2018.EventDao;
 
-@Database(entities = {Event.class}, version = 2)
+@Database(entities = {Event.class}, version = 3)
 public abstract class AppDatabase extends RoomDatabase {
   public abstract EventDao eventDao();
 }
